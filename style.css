@@ -1,17 +1,23 @@
 :root {
     --bg-color: #f8f9fa;
+    --sidebar-bg: #e9ecef;
     --text-color: #343a40;
     --accent-color: #ced4da;
     --font-family: 'Noto Sans KR', sans-serif;
     --placeholder-color: #adb5bd;
+    --hover-color: #dfe2e6;
+    --active-item-bg: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --bg-color: #121212;
+        --sidebar-bg: #1e1e1e;
         --text-color: #e9ecef;
         --accent-color: #343a40;
         --placeholder-color: #495057;
+        --hover-color: #2c2c2c;
+        --active-item-bg: #2d2d2d;
     }
 }
 
@@ -28,18 +34,119 @@ html {
     background-color: var(--bg-color);
     color: var(--text-color);
     overflow: hidden;
-    /* Prevent body scrollbar */
 }
 
-.container {
+.app-container {
+    display: flex;
     height: 100%;
     width: 100%;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 280px;
+    background-color: var(--sidebar-bg);
     display: flex;
     flex-direction: column;
-    padding: 2rem;
-    max-width: 800px;
-    margin: 0 auto;
+    border-right: 1px solid var(--accent-color);
+    flex-shrink: 0;
+}
+
+.sidebar-header {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.sidebar-header h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+#add-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#add-btn:hover {
+    background-color: var(--hover-color);
+}
+
+#memo-list {
+    list-style: none;
+    overflow-y: auto;
+    flex: 1;
+    padding: 0.5rem;
+}
+
+.memo-item {
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    transition: background 0.2s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.memo-item:hover {
+    background-color: var(--hover-color);
+}
+
+.memo-item.active {
+    background-color: var(--active-item-bg);
+    font-weight: 500;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.memo-item .date {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--placeholder-color);
+    margin-top: 0.25rem;
+}
+
+/* Main Content Styling */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     position: relative;
+    padding: 2rem;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+#delete-btn {
+    background: transparent;
+    border: none;
+    color: var(--placeholder-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: color 0.2s, background 0.2s;
+}
+
+#delete-btn:hover {
+    color: #ff6b6b;
+    background-color: var(--hover-color);
 }
 
 textarea {
@@ -54,14 +161,12 @@ textarea {
     color: var(--text-color);
     font-family: var(--font-family);
     padding-bottom: 2rem;
-    /* Space for status */
 }
 
 textarea::placeholder {
     color: var(--placeholder-color);
 }
 
-/* Custom Scrollbar */
 textarea::-webkit-scrollbar {
     width: 8px;
 }
@@ -107,14 +212,12 @@ textarea::-webkit-scrollbar-track {
     position: absolute;
     bottom: 2rem;
     right: 6.5rem;
-    /* saving button left side */
     font-size: 0.9rem;
     color: var(--placeholder-color);
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
     line-height: 3.5rem;
-    /* Vertical center alignment */
 }
 
 #status.show {
