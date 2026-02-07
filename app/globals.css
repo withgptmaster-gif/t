@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --bg-color: #f8f9fa;
+  --sidebar-bg: #e9ecef;
+  --text-color: #343a40;
+  --accent-color: #ced4da;
+  --placeholder-color: #adb5bd;
+  --hover-color: #dfe2e6;
+  --active-item-bg: #ffffff;
+
+  --background: var(--bg-color);
+  --foreground: var(--text-color);
+  --card: #ffffff;
+  --card-foreground: #343a40;
+  --primary: #343a40;
+  --primary-foreground: #f8f9fa;
+  --secondary: #e9ecef;
+  --secondary-foreground: #343a40;
+  --muted: #e9ecef;
+  --muted-foreground: #868e96;
+  --accent: #e9ecef;
+  --accent-foreground: #343a40;
+  --destructive: #ff6b6b;
+  --destructive-foreground: #ffffff;
+  --border: #ced4da;
+  --input: #ced4da;
+  --ring: #343a40;
+  --radius: 0.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #121212;
+    --sidebar-bg: #1e1e1e;
+    --text-color: #e9ecef;
+    --accent-color: #343a40;
+    --placeholder-color: #495057;
+    --hover-color: #2c2c2c;
+    --active-item-bg: #2d2d2d;
+
+    --background: var(--bg-color);
+    --foreground: var(--text-color);
+    --card: #1e1e1e;
+    --card-foreground: #e9ecef;
+    --primary: #e9ecef;
+    --primary-foreground: #121212;
+    --secondary: #1e1e1e;
+    --secondary-foreground: #e9ecef;
+    --muted: #1e1e1e;
+    --muted-foreground: #868e96;
+    --accent: #1e1e1e;
+    --accent-foreground: #e9ecef;
+    --destructive: #ff6b6b;
+    --destructive-foreground: #ffffff;
+    --border: #343a40;
+    --input: #343a40;
+    --ring: #e9ecef;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius: var(--radius);
+}
