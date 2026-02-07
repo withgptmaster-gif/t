@@ -1,0 +1,122 @@
+:root {
+    --bg-color: #f8f9fa;
+    --text-color: #343a40;
+    --accent-color: #ced4da;
+    --font-family: 'Noto Sans KR', sans-serif;
+    --placeholder-color: #adb5bd;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #121212;
+        --text-color: #e9ecef;
+        --accent-color: #343a40;
+        --placeholder-color: #495057;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100%;
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow: hidden;
+    /* Prevent body scrollbar */
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+textarea {
+    flex: 1;
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    resize: none;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    padding-bottom: 2rem;
+    /* Space for status */
+}
+
+textarea::placeholder {
+    color: var(--placeholder-color);
+}
+
+/* Custom Scrollbar */
+textarea::-webkit-scrollbar {
+    width: 8px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color);
+    border-radius: 4px;
+}
+
+textarea::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#save-btn {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+    z-index: 10;
+}
+
+#save-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+#save-btn:active {
+    transform: translateY(0);
+}
+
+#status {
+    position: absolute;
+    bottom: 2rem;
+    right: 6.5rem;
+    /* saving button left side */
+    font-size: 0.9rem;
+    color: var(--placeholder-color);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    line-height: 3.5rem;
+    /* Vertical center alignment */
+}
+
+#status.show {
+    opacity: 1;
+}
